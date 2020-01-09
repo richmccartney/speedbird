@@ -1,0 +1,26 @@
+{
+  "name": "@design-system/design-tokens",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Richard McCartney <richard@mccartney.io>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "src/index.js",
+  "directories": {
+    "src": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "devDependencies": {
+    "express": "^4.17.1",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2",
+    "gulp-theo": "^2.0.0",
+    "theo": "^8.1.4"
+  }
+}

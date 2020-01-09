@@ -1,0 +1,35 @@
+{
+    "compilerOptions": {
+      "alwaysStrict": true,
+      "strict": true,
+      "allowSyntheticDefaultImports": true,
+      "allowUnreachableCode": false,
+      "declaration": true,
+      "experimentalDecorators": true,
+      "forceConsistentCasingInFileNames": true,
+      "lib": [
+        "dom",
+        "es2017"
+      ],
+      "module": "es2015",
+      "moduleResolution": "node",
+      "noImplicitAny": true,
+      "noImplicitReturns": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "pretty": true,
+      "removeComments": false,
+      "strictPropertyInitialization": false,
+      "target": "es2017",
+      "baseUrl": ".",
+      "paths": {
+        "@design-system/core/hydrate": [
+          "./core/hydrate"
+        ],
+        "@design-system/core": [
+          "./core"
+        ]
+      }
+    }
+  }
+  
