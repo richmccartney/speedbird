@@ -28,6 +28,9 @@
         ],
         "@design-system/core": [
           "./core"
+        ],
+        "@design-system/icons": [
+          "./icons"
         ]
       }
     }
