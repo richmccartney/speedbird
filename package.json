@@ -2,6 +2,7 @@
   "description": "Design system mono-repo root package.json, used mainly to execute setup/build scripts. This package is not published.",
   "private": true,
   "devDependencies": {
+    "cz-conventional-changelog": "^3.0.2",
     "lerna": "^3.20.2"
   },
   "scripts": {
@@ -13,5 +14,10 @@
   ],
   "engines": {
     "node": ">= 10"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
