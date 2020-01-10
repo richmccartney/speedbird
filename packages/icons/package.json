@@ -1,5 +1,5 @@
 {
-  "name": "icons",
+  "name": "@design-system/icons",
   "version": "0.0.1-alpha.0",
   "description": "Stencil Component Starter",
   "main": "dist/index.js",
