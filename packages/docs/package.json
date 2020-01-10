@@ -1,6 +1,6 @@
 {
-  "name": "@design-system/docs",
-  "version": "0.0.1",
+  "name": "@speedbird/docs",
+  "version": "0.0.0",
   "description": "> TODO: description",
   "author": "Richard McCartney <richard@mccartney.io>",
   "homepage": "",
@@ -14,5 +14,6 @@
   ],
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
-  }
+  },
+  "gitHead": "f06b07fb8f3634d1c334cac21167c1ea36d0e25e"
 }

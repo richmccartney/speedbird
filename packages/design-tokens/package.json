@@ -1,6 +1,6 @@
 {
-  "name": "@design-system/design-tokens",
-  "version": "0.0.1",
+  "name": "@speedbird/design-tokens",
+  "version": "0.0.0",
   "description": "> TODO: description",
   "author": "Richard McCartney <richard@mccartney.io>",
   "homepage": "",
@@ -18,5 +18,6 @@
   },
   "devDependencies": {
     "style-dictionary": "^2.8.3"
-  }
+  },
+  "gitHead": "f06b07fb8f3634d1c334cac21167c1ea36d0e25e"
 }

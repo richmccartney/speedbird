@@ -23,13 +23,13 @@
       "target": "es2017",
       "baseUrl": ".",
       "paths": {
-        "@design-system/core/hydrate": [
+        "@speedbird/core/hydrate": [
           "./core/hydrate"
         ],
-        "@design-system/core": [
+        "@speedbird/core": [
           "./core"
         ],
-        "@design-system/icons": [
+        "@speedbird/icons": [
           "./icons"
         ]
       }
