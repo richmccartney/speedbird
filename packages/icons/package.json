@@ -1,6 +1,6 @@
 {
   "name": "@design-system/icons",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Stencil Component Starter",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -25,7 +25,7 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@design-system/design-tokens": "^0.0.0"
+    "@design-system/design-tokens": "^0.0.1"
   },
   "devDependencies": {
     "@stencil/core": "^1.8.4"
