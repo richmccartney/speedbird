@@ -1,6 +1,6 @@
 {
   "name": "@design-system/components",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.0",
   "description": "> TODO: description",
   "author": "Richard McCartney <richard@mccartney.io>",
   "main": "dist/index.js",
@@ -26,7 +26,7 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@design-system/design-tokens": "^0.0.1-alpha.0",
+    "@design-system/design-tokens": "^0.0.0",
     "@design-system/icons": "^0.0.0"
   },
   "devDependencies": {

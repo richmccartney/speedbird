@@ -1,6 +1,6 @@
 {
   "name": "@design-system/icons",
-  "version": "0.0.1-alpha",
+  "version": "0.0.0",
   "description": "Stencil Component Starter",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -25,10 +25,11 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@design-system/design-tokens": "^0.0.1-alpha.0"
+    "@design-system/design-tokens": "^0.0.0"
   },
   "devDependencies": {
     "@stencil/core": "^1.8.4"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "56b48846c5d2595edd1335f7807bb58beeed92a7"
 }
