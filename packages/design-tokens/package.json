@@ -7,20 +7,16 @@
   "license": "ISC",
   "main": "src/index.js",
   "directories": {
-    "src": "src",
-    "test": "__tests__"
+    "src": "src"
   },
   "files": [
-    "src"
+    "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "style-dictionary build"
   },
   "devDependencies": {
-    "express": "^4.17.1",
-    "gulp": "^4.0.2",
-    "gulp-sass": "^4.0.2",
-    "gulp-theo": "^2.0.0",
-    "theo": "^8.1.4"
+    "style-dictionary": "^2.8.3"
   }
 }
