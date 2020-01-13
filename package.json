@@ -9,8 +9,7 @@
   },
   "scripts": {
     "setup": "lerna bootstrap",
-    "clean": "lerna clean",
-    "publish": "lerna publish from-package"
+    "clean": "lerna clean"
   },
   "workspaces": [
     "packages/*"
