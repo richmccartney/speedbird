@@ -1,0 +1,36 @@
+{
+  "name": "@speedbird/styles",
+  "version": "0.0.1-alpha.0",
+  "description": "> TODO: description",
+  "author": "Richard McCartney <richard@mccartney.io>",
+  "homepage": "https://github.com/richmccartney/design-system#readme",
+  "license": "ISC",
+  "directories": {
+    "src": "src"
+  },
+  "files": [
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richmccartney/design-system.git"
+  },
+  "scripts": {
+    "build": "node-sass src/speedbird.scss dist/speedbird.css",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "@speedbird/design-tokens": "^0.0.1-alpha.0"
+  },
+  "bugs": {
+    "url": "https://github.com/richmccartney/design-system/issues"
+  },
+  "sass": {
+    "includePaths": [
+      "./node_modules"
+    ]
+  },
+  "devDependencies": {
+    "node-sass": "^4.13.0"
+  }
+}
