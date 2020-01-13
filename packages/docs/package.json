@@ -23,5 +23,5 @@
     "build": "echo \"Build\" && exit 1",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "f06b07fb8f3634d1c334cac21167c1ea36d0e25e"
+  "gitHead": "7b73a1749a5ec768dcabd177a4293b5bf3f3d5b8"
 }
