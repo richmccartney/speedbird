@@ -1,6 +1,6 @@
 {
   "name": "@speedbird/docs",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.1",
   "description": "> TODO: description",
   "author": "Richard McCartney <richard@mccartney.io>",
   "homepage": "",
@@ -13,11 +13,11 @@
     "src"
   ],
   "dependencies": {
-    "@speedbird/components": "^0.0.1-alpha.0",
-    "@speedbird/design-tokens": "^0.0.1-alpha.0",
-    "@speedbird/fonts": "^0.0.1-alpha.0",
-    "@speedbird/icons": "^0.0.1-alpha.0",
-    "@speedbird/styles": "^0.0.1-alpha.0"
+    "@speedbird/components": "^0.0.1",
+    "@speedbird/design-tokens": "^0.0.1",
+    "@speedbird/fonts": "^0.0.1",
+    "@speedbird/icons": "^0.0.1",
+    "@speedbird/styles": "^0.0.1"
   },
   "scripts": {
     "build": "echo \"Build\" && exit 1",
