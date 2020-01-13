@@ -12,6 +12,13 @@
   "files": [
     "src"
   ],
+  "dependencies": {
+    "@speedbird/components": "^0.0.1-alpha.0",
+    "@speedbird/design-tokens": "^0.0.1-alpha.0",
+    "@speedbird/fonts": "^0.0.1-alpha.0",
+    "@speedbird/icons": "^0.0.1-alpha.0",
+    "@speedbird/styles": "^0.0.1-alpha.0"
+  },
   "scripts": {
     "build": "echo \"Build\" && exit 1",
     "test": "echo \"Error: run tests from root\" && exit 1"
