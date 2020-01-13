@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Open Sans';
-    font-display: auto;
+    font-display: 'auto';
     src: url('OpenSans-Extrabold.woff2') format('woff2'), 
          url('OpenSans-Extrabold.woff') format('woff');
     font-weight: 800;
@@ -8,47 +8,21 @@
 }
 @font-face {
     font-family: 'Open Sans';
-    font-display: auto;
-    src: url('OpenSans-ExtraBoldItalic') format('woff2'), 
-         url('OpenSans-ExtraBoldItalic.woff') format('woff');
-    font-weight: 800;
-    font-style: italic;
-}
-@font-face {
-    font-family: 'Open Sans';
-    font-display: auto;
-    src: url('OpenSans-Bold.woff2') format('woff2'), 
-         url('OpenSans-Bold.woff') format('woff');
-    font-weight: 700;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Open Sans';
-    font-display: auto;
-    src: url('OpenSans-BoldItalic') format('woff2'), 
-         url('OpenSans-BoldItalic.woff') format('woff');
-    font-weight: 700;
-    font-style: italic;
-}
-@font-face {
-    font-family: 'Open Sans';
-    font-display: auto;
-    src: url('OpenSans-SemiBold.woff2') format('woff2'), 
-         url('OpenSans-SemiBold.woff') format('woff');
+    font-display: 'auto';
+    src: url('OpenSans-Semibold.woff2') format('woff2'), 
+         url('OpenSans-Semibold.woff') format('woff');
     font-weight: 600;
     font-style: normal;
 }
 @font-face {
     font-family: 'Open Sans';
-    font-display: auto;
-    src: url('OpenSans-SemiBoldItalic') format('woff2'), 
-         url('OpenSans-SemiBoldItalic.woff') format('woff');
-    font-weight: 600;
-    font-style: italic;
+    font-display: 'auto';
+    src: url('OpenSans-Regular.woff2') format('woff2'), 
+         url('OpenSans-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
 }
-
 body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
 }
-  

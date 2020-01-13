@@ -1,11 +1,10 @@
 {
   "name": "@speedbird/docs",
   "version": "0.0.1-alpha.0",
-  "description": "> TODO: description",
+  "description": "Speedbird Fonts and related tools",
   "author": "Richard McCartney <richard@mccartney.io>",
   "homepage": "https://github.com/richmccartney/design-system#readme",
   "license": "ISC",
-  "main": "src/fonts.js",
   "directories": {
     "src": "src"
   },

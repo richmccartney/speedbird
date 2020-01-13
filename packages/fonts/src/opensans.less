@@ -1,0 +1,31 @@
+@speedbird-font-path: '..';
+@speedbird-font-display: auto;
+
+@font-face {
+  font-family: 'Open Sans';
+  font-display: @speedbird-font-display;
+  src: url('@{speedbird-font-path}/OpenSans-Extrabold.woff2') format('woff2'),
+       url('@{speedbird-font-path}/OpenSans-Extrabold.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-display: @speedbird-font-display;
+  src: url('@{speedbird-font-path}/OpenSans-Semibold.woff2') format('woff2'),
+       url('@{speedbird-font-path}/OpenSans-Semibold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-display: @speedbird-font-display;
+  src: url('@{speedbird-font-path}/OpenSans-Regular.woff2') format('woff2'),
+       url('@{speedbird-font-path}/OpenSans-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}

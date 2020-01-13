@@ -1,11 +1,3 @@
-# `fonts`
+# Speedbird Fonts
 
-> TODO: description
-
-## Usage
-
-```
-const fonts = require('fonts');
-
-// TODO: DEMONSTRATE API
-```
+This package includes all Speedbird Fonts and related tools.
