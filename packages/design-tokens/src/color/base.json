@@ -1,6 +1,8 @@
 {
   "color": {
     "base": {
+      "white": { "value": "#FFFFFF" },
+      "black": { "value": "#000000" },
       "gray": {
         "light" : { "value": "#CCCCCC" },
         "medium": { "value": "#999999" },
