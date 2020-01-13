@@ -3,18 +3,24 @@
   "version": "0.0.1-alpha.0",
   "description": "> TODO: description",
   "author": "Richard McCartney <richard@mccartney.io>",
-  "homepage": "",
+  "homepage": "https://github.com/richmccartney/design-system#readme",
   "license": "ISC",
-  "main": "src/index.js",
+  "main": "src/fonts.js",
   "directories": {
     "src": "src"
   },
   "files": [
     "src"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richmccartney/design-system.git"
+  },
   "scripts": {
     "build": "echo \"Build\" && exit 1",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "f06b07fb8f3634d1c334cac21167c1ea36d0e25e"
+  "bugs": {
+    "url": "https://github.com/richmccartney/design-system/issues"
+  }
 }
