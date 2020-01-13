@@ -27,7 +27,8 @@
   },
   "dependencies": {
     "@speedbird/design-tokens": "^0.0.1-alpha.0",
-    "@speedbird/icons": "^0.0.1-alpha.0"
+    "@speedbird/icons": "^0.0.1-alpha.0",
+    "@speedbird/styles": "^0.0.1-alpha.0"
   },
   "devDependencies": {
     "@stencil/core": "^1.8.4"

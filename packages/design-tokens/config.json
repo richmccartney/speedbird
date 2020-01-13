@@ -9,6 +9,14 @@
         "format": "scss/variables"
       }]
     },
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/css/",
+      "files": [{
+        "destination": "variables.css",
+        "format": "css/variables"
+      }]
+    },
     "android": {
       "transformGroup": "android",
       "buildPath": "dist/android/",
