@@ -1,6 +1,6 @@
 {
   "name": "@speedbird/icons",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Stencil Component Starter",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -25,9 +25,9 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@speedbird/design-tokens": "^0.0.2",
-    "@speedbird/icons": "^0.0.2",
-    "@speedbird/styles": "^0.0.2"
+    "@speedbird/design-tokens": "^0.0.3",
+    "@speedbird/icons": "^0.0.3",
+    "@speedbird/styles": "^0.0.3"
   },
   "devDependencies": {
     "@stencil/core": "^1.8.4"
