@@ -1,10 +1,19 @@
 {
+  "lerna": "3.20.2",
   "packages": [
     "packages/*"
   ],
+  "npmClient": "npm",
   "version": "independent",
   "publishConfig": {
     "access": "public",
     "directory": "dist"
+  },
+  "command": {
+    "publish": {
+      "allowBranch": "master",
+      "conventionalCommits": true,
+      "message": "chore(release): updated release notes and package versions"
+    }
   }
 }
