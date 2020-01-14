@@ -58,11 +58,11 @@ jobs:
       - restore_cache: *restore-cache-components-stencil
       - run:
           command: npm install
-          working_directory: /tmp/workspace/components
+          working_directory: /tmp/workspace/packages/components
       - save_cache: *save-cache-components
       - run:
           command: npm run build -- --ci
-          working_directory: /tmp/workspace/components
+          working_directory: /tmp/workspace/packages/components
       - save_cache: *save-cache-components-stencil
       - persist_to_workspace:
           root: /tmp/workspace
@@ -78,7 +78,7 @@ jobs:
       - run:
           name: Checking clean build
           command: git diff --exit-code
-          working_directory: /tmp/workspace/components
+          working_directory: /tmp/workspace/packages/components
 
   test-components-lint:
     <<: *defaults
@@ -88,7 +88,7 @@ jobs:
           at: /tmp/workspace
       - run:
           command: npm run lint
-          working_directory: /tmp/workspace/components
+          working_directory: /tmp/workspace/packages/components
 
   test-components-spec:
     <<: *defaults
@@ -98,7 +98,7 @@ jobs:
           at: /tmp/workspace
       - run:
           command: npm run test.spec --ci
-          working_directory: /tmp/workspace/components
+          working_directory: /tmp/workspace/packages/components
 
 workflows:
   version: 2
