@@ -26,7 +26,7 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@speedbird/design-tokens": "^0.1.0",
+    "@speedbird/design-tokens": "^0.0.3",
     "@speedbird/icons": "^0.0.4",
     "@speedbird/styles": "^0.0.4"
   },
