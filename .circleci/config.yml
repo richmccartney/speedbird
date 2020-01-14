@@ -41,7 +41,6 @@ jobs:
       - checkout
       - restore_cache: *restore-cache
       - run: npm install
-      - run: npm run setup
       - save_cache: *save-cache
       - persist_to_workspace:
           root: /tmp/workspace
