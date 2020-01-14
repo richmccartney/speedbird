@@ -28,7 +28,7 @@
   "dependencies": {
     "@speedbird/design-tokens": "^0.0.3",
     "@speedbird/icons": "^0.0.3",
-    "@speedbird/styles": "^0.0.4"
+    "@speedbird/styles": "^0.0.3"
   },
   "devDependencies": {
     "@stencil/core": "^1.8.4",
