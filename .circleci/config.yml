@@ -1,13 +1,115 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
-version: 2.1
-# Use a package of configuration called an orb.
-orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.4.1
-# Orchestrate or schedule a set of jobs
+version: 2
+
+aliases:
+  - &restore-cache
+      keys:
+        - dependency-cache-{{ checksum "package.json" }}-3
+
+  - &save-cache
+      key: dependency-cache-{{ checksum "package.json" }}-3
+      paths:
+        - node_modules
+
+  - &restore-cache-components
+      keys:
+        - dependency-cache-{{ checksum "packages/components/package.json" }}-3
+
+  - &save-cache-components
+      key: dependency-cache-{{ checksum "packages/components/package.json" }}-3
+      paths:
+        - packages/components/node_modules
+
+  - &restore-cache-components-stencil
+      keys:
+        - stencil-cache-2
+
+  - &save-cache-components-stencil
+      key: stencil-cache-2
+      paths:
+        - packages/components/.stencil
+        - packages/components/screenshot/images
+
+defaults: &defaults
+  docker:
+    - image: circleci/node:10-browsers
+  working_directory: /tmp/workspace
+
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache: *restore-cache
+      - run: npm install
+      - run: npm run setup
+      - save_cache: *save-cache
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - "*"
+
+  build-components:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - restore_cache: *restore-cache-components
+      - restore_cache: *restore-cache-components-stencil
+      - run:
+          command: npm install
+          working_directory: /tmp/workspace/components
+      - save_cache: *save-cache-components
+      - run:
+          command: npm run build -- --ci
+          working_directory: /tmp/workspace/components
+      - save_cache: *save-cache-components-stencil
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - "*"
+
+  test-components-clean-build:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Checking clean build
+          command: git diff --exit-code
+          working_directory: /tmp/workspace/components
+
+  test-components-lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          command: npm run lint
+          working_directory: /tmp/workspace/components
+
+  test-components-spec:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          command: npm run test.spec --ci
+          working_directory: /tmp/workspace/components
+
 workflows:
-  # Name the workflow "welcome"
-  welcome:
-    # Run the welcome/run job in its own container
+  version: 2
+  build:
     jobs:
-      - welcome/run
+      - build
+      - build-components:
+          requires: [build]
+      - test-components-clean-build:
+          requires: [build-components]
+      - test-components-lint:
+          requires: [build-components]
+      - test-components-spec:
+          requires: [build-components]
