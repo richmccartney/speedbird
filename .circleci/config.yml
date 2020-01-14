@@ -96,7 +96,7 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run:
-          command: npm run test.spec --ci
+          command: npm run test --ci
           working_directory: /tmp/workspace/packages/components
 
 workflows:

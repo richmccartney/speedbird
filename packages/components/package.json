@@ -23,7 +23,11 @@
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "lint": "npm run lint.ts && npm run lint.sass",
+    "lint.fix": "npm run lint.ts.fix && npm run lint.sass.fix",
+    "lint.sass": "stylelint 'src/**/*.scss'",
+    "lint.ts": "tslint --project ."
   },
   "dependencies": {
     "@speedbird/design-tokens": "^0.0.3",
@@ -32,7 +36,14 @@
   },
   "devDependencies": {
     "@stencil/core": "^1.8.4",
-    "@stencil/sass": "^1.0.1"
+    "@stencil/sass": "^1.0.1",
+    "stylelint": "10.1.0",
+    "stylelint-order": "3.0.1",
+    "tslint": "^5.10.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-ionic-rules": "0.0.21",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^3.6.0"
   },
   "license": "MIT",
   "gitHead": "7b73a1749a5ec768dcabd177a4293b5bf3f3d5b8"
