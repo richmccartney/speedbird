@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@speedbird/design-tokens": "^0.0.3",
-    "@speedbird/icons": "^0.0.4",
+    "@speedbird/icons": "^0.0.3",
     "@speedbird/styles": "^0.0.4"
   },
   "devDependencies": {
