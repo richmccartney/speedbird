@@ -253,4 +253,4 @@ rules:
 
 
   string-quotes:
-    - double
+    - single

@@ -1,12 +1,10 @@
-import { Config } from '@stencil/core';
+import { Config } from '@stencil/core'
 import { sass } from '@stencil/sass'
 
 export const config: Config = {
   namespace: 'components',
   globalStyle: 'src/global/variables.scss',
-  plugins: [
-    sass()
-  ],
+  plugins: [sass()],
   outputTargets: [
     {
       type: 'dist',
@@ -20,4 +18,4 @@ export const config: Config = {
       serviceWorker: null // disable service workers
     }
   ]
-};
+}
