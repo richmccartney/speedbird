@@ -1,6 +1,6 @@
 {
   "name": "@speedbird/docs",
-  "version": "0.0.7",
+  "version": "0.0.6",
   "description": "> TODO: description",
   "author": "Richard McCartney <richard@mccartney.io>",
   "homepage": "",
@@ -16,8 +16,8 @@
     "@speedbird/components": "^0.0.6",
     "@speedbird/design-tokens": "^0.1.0",
     "@speedbird/fonts": "^0.0.3",
-    "@speedbird/icons": "^0.0.5",
-    "@speedbird/styles": "^0.0.5"
+    "@speedbird/icons": "^0.0.4",
+    "@speedbird/styles": "^0.0.4"
   },
   "scripts": {
     "build": "echo \"Build\" && exit 1",
