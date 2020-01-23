@@ -1,6 +1,6 @@
 {
   "name": "@speedbird/styles",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "> TODO: description",
   "author": "Richard McCartney <richard@mccartney.io>",
   "homepage": "https://github.com/richmccartney/design-system#readme",
@@ -20,7 +20,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@speedbird/design-tokens": "^0.0.4"
+    "@speedbird/design-tokens": "^0.0.5"
   },
   "bugs": {
     "url": "https://github.com/richmccartney/design-system/issues"

@@ -1,6 +1,6 @@
 {
   "name": "@speedbird/components",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "> TODO: description",
   "author": "Richard McCartney <richard@mccartney.io>",
   "main": "dist/index.js",
@@ -32,9 +32,9 @@
     "lint.ts.fix": "tslint --project . --fix"
   },
   "dependencies": {
-    "@speedbird/design-tokens": "^0.0.4",
-    "@speedbird/icons": "^0.0.4",
-    "@speedbird/styles": "^0.0.4"
+    "@speedbird/design-tokens": "^0.0.5",
+    "@speedbird/icons": "^0.0.5",
+    "@speedbird/styles": "^0.0.5"
   },
   "devDependencies": {
     "@stencil/core": "^1.8.4",
