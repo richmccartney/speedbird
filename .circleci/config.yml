@@ -102,11 +102,11 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-        at: /tmp/workspace
+          at: /tmp/workspace
       - run:
-        name: Checking clean build
-        command: git diff --exit-code
-        working_directory: /tmp/workspace/packages/styles
+          name: Checking clean build
+          command: git diff --exit-code
+          working_directory: /tmp/workspace/packages/styles
 
   test-styles-lint:
     <<: *defaults
