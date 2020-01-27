@@ -29,6 +29,15 @@ aliases:
         - packages/components/.stencil
         - packages/components/screenshot/images
 
+  - &restore-cache-styles
+      keys:
+        - dependency-cache-{{ checksum "packages/styles/package.json" }}-3
+
+  - &save-cache-styles
+      key: dependency-cache-{{ checksum "packages/styles/package.json" }}-3
+      paths:
+        - packages/styles/node_modules
+
 defaults: &defaults
   docker:
     - image: circleci/node:10-browsers
@@ -68,6 +77,47 @@ jobs:
           paths:
             - "*"
 
+  build-styles:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - restore_cache: *restore-cache-styles
+      - run:
+          command: npm install
+          working_directory: /tmp/workspace/packages/styles
+      - save_cache: *save-cache-styles
+      - run:
+          command: npm run build -- --ci
+          working_directory: /tmp/workspace/packages/styles
+      - save_cache: *save-cache-styles
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - "*"
+  
+  test-styles-clean-build:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+        at: /tmp/workspace
+      - run:
+        name: Checking clean build
+        command: git diff --exit-code
+        working_directory: /tmp/workspace/packages/styles
+
+  test-styles-lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          command: npm run lint.sass
+          working_directory: /tmp/workspace/packages/styles
+
   test-components-clean-build:
     <<: *defaults
     steps:
@@ -106,9 +156,15 @@ workflows:
       - build
       - build-components:
           requires: [build]
+      - build-styles:
+          requires: [build]
       - test-components-clean-build:
           requires: [build-components]
       - test-components-lint:
           requires: [build-components]
       - test-components-spec:
           requires: [build-components]
+      - test-styles-clean-build:
+          requires: [build-styles]
+      - test-styles-lint:
+          requires: [build-styles]

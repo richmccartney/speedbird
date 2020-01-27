@@ -1,0 +1,84 @@
+@import './button.vars';
+
+// Button
+// --------------------------------------------------
+
+:host {
+    --color: #{$button-color};
+    --background: #{$button-background};
+    --background-hover: #{$button-background-hover};
+    --border-color: #{$button-border-color};
+    --border-radius: #{$button-border-radius};
+    --border-width: #{$button-border-width};
+    --font-family: #{$button-font-family};
+    --font-size: #{$button-font-size};
+    --padding-vertical: #{$button-padding};
+    --padding-horizontal: #{$button-padding * 2};
+
+    -webkit-appearance: none;
+        
+    display: inline-block;
+
+    appearance: none;
+    box-sizing: border-box;
+    user-select: none;
+    pointer-events: auto;
+    position: relative;
+    cursor: pointer;
+
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+
+    white-space: normal;
+
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+
+    color: var(--color);
+
+    background-color: var(--background);
+
+    border-width: var(--border-width);
+    border-style: solid;
+    border-color: var(--border-color);
+    border-radius: var(--border-radius);
+
+    padding: var(--padding-vertical) var(--padding-horizontal);
+}
+ 
+:host(:hover) {
+    --background: var(--background-hover);
+}
+
+:host([disabled]) {
+    cursor: not-allowed;
+}
+
+:host(.primary) {
+    --color: #{$primary-button-color};
+    --background: #{$primary-button-background};
+    --background-hover: #{$primary-button-background-hover};
+    --border-color: #{$primary-button-border-color};
+}
+
+:host(.positive) {
+    --color: #{$positive-button-color};
+    --background: #{$positive-button-background};
+    --background-hover: #{$positive-button-background-hover};
+    --border-color: #{$positive-button-border-color};
+}
+
+:host(.destructive) {
+    --color: #{$destructive-button-color};
+    --background: #{$destructive-button-background};
+    --background-hover: #{$destructive-button-background-hover};
+    --border-color: #{$destructive-button-border-color};
+}
+
+:host(.link) {
+    --color: #{$link-button-color};
+    --background: #{$link-button-background};
+    --background-hover: #{$link-button-background-hover};
+    --border-color: #{$link-button-border-color};
+}

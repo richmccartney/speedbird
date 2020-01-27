@@ -4,7 +4,11 @@ import { sass } from '@stencil/sass'
 export const config: Config = {
   namespace: 'components',
   globalStyle: 'src/global/variables.scss',
-  plugins: [sass()],
+  plugins: [
+    sass({
+      includePaths: ['node_modules']
+    })
+  ],
   outputTargets: [
     {
       type: 'dist',

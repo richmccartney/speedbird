@@ -10,53 +10,61 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface MyComponent {
+  interface SpdButton {
     /**
-    * The first name
+    * If `true`, the user cannot interact with the button.
     */
-    'first': string;
+    'disabled': boolean;
     /**
-    * The last name
+    * Contains a URL or a URL fragment that the hyperlink points to. If this property is set, an anchor tag will be rendered.
     */
-    'last': string;
+    'href'?: string;
     /**
-    * The middle name
+    * Name type of the button
     */
-    'middle': string;
+    'name': 'default' | 'primary' | 'positive' | 'negative' | 'link';
+    /**
+    * The type of button
+    */
+    'type': 'submit' | 'reset' | 'button';
   }
 }
 
 declare global {
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLSpdButtonElement extends Components.SpdButton, HTMLStencilElement {}
+  var HTMLSpdButtonElement: {
+    prototype: HTMLSpdButtonElement;
+    new (): HTMLSpdButtonElement;
   };
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
+    'spd-button': HTMLSpdButtonElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface MyComponent {
+  interface SpdButton {
     /**
-    * The first name
+    * If `true`, the user cannot interact with the button.
     */
-    'first'?: string;
+    'disabled'?: boolean;
     /**
-    * The last name
+    * Contains a URL or a URL fragment that the hyperlink points to. If this property is set, an anchor tag will be rendered.
     */
-    'last'?: string;
+    'href'?: string;
     /**
-    * The middle name
+    * Name type of the button
     */
-    'middle'?: string;
+    'name'?: 'default' | 'primary' | 'positive' | 'negative' | 'link';
+    /**
+    * The type of button
+    */
+    'type'?: 'submit' | 'reset' | 'button';
   }
 
   interface IntrinsicElements {
-    'my-component': MyComponent;
+    'spd-button': SpdButton;
   }
 }
 
@@ -66,7 +74,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+      'spd-button': LocalJSX.SpdButton & JSXBase.HTMLAttributes<HTMLSpdButtonElement>;
     }
   }
 }

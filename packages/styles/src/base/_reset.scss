@@ -44,9 +44,11 @@ dd {
  */
 body {
   min-height: 100vh;
-  scroll-behavior: smooth;
-  text-rendering: optimizeSpeed;
+
   line-height: 1.5;
+
+  text-rendering: optimizeSpeed;
+  scroll-behavior: smooth;
 }
 
 /**
@@ -68,8 +70,9 @@ a:not([class]) {
  * Make images easier to work with
  */
 img {
-  max-width: 100%;
   display: block;
+
+  max-width: 100%;
 }
 
 /**
@@ -94,9 +97,12 @@ select {
  */
 @media (prefers-reduced-motion: reduce) {
   * {
+    /* stylelint-disable */
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    /* stylelint-enable */
   }
 }

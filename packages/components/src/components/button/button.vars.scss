@@ -1,0 +1,91 @@
+@import '../../global/variables';
+
+// Default
+// --------------------------------------------------
+
+/// @prop
+$button-color:                        $color-base-black !default;
+
+/// @prop
+$button-background:                   $color-base-white !default;
+
+/// @prop
+$button-background-hover:             lighten( $color-base-gray-light, 10% ) !default;
+
+/// @prop
+$button-font-family:                  'Open Sans' !default;
+
+/// @prop
+$button-font-size:                    $size-font-medium !default;
+
+/// @prop
+$button-border-color:                 $color-base-gray-dark !default;
+
+/// @prop
+$button-border-radius:                4px !default;
+
+/// @prop
+$button-border-width:                 1px !default;
+
+/// @prop
+$button-padding:                      8px !default;
+
+// Primary
+// --------------------------------------------------
+
+/// @prop
+$primary-button-background:           desaturate( $color-base-blue, 59% ) !default;
+
+/// @prop
+$primary-button-color:                $color-base-white !default;
+
+/// @prop
+$primary-button-background-hover:     desaturate( $color-base-blue, 75% ) !default;
+
+/// @prop
+$primary-button-border-color:         desaturate( $color-base-blue, 90% ) !default;
+
+// Positive
+// --------------------------------------------------
+
+/// @prop
+$positive-button-background:           desaturate( $color-base-green, 59% ) !default;
+
+/// @prop
+$positive-button-color:                $color-base-white !default;
+
+/// @prop
+$positive-button-background-hover:     desaturate( $color-base-green, 75% ) !default;
+
+/// @prop
+$positive-button-border-color:         desaturate( $color-base-green, 90% ) !default;
+
+// Destructive
+// --------------------------------------------------
+
+/// @prop
+$destructive-button-background:           desaturate( $color-base-red, 59% ) !default;
+
+/// @prop
+$destructive-button-color:                $color-base-white !default;
+
+/// @prop
+$destructive-button-background-hover:     desaturate( $color-base-red, 75% ) !default;
+
+/// @prop
+$destructive-button-border-color:         desaturate( $color-base-red, 90% ) !default;
+
+// Link
+// --------------------------------------------------
+
+/// @prop
+$link-button-background:              transparent !default;
+
+/// @prop
+$link-button-color:                   lighten( $color-base-blue, 25% ) !default;
+
+/// @prop
+$link-button-background-hover:        transparent !default;
+
+/// @prop
+$link-button-border-color:            transparent !default;
