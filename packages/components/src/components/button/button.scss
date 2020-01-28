@@ -14,17 +14,24 @@
     --font-size: #{$button-font-size};
     --padding-vertical: #{$button-padding};
     --padding-horizontal: #{$button-padding * 2};
-
-    -webkit-appearance: none;
         
     display: inline-block;
-
-    appearance: none;
-    box-sizing: border-box;
-    user-select: none;
-    pointer-events: auto;
     position: relative;
-    cursor: pointer;
+
+    padding: var(--padding-vertical) var(--padding-horizontal);
+
+    border-width: var(--border-width);
+    border-style: solid;
+    border-radius: var(--border-radius);
+    border-color: var(--border-color);
+
+    background-color: var(--background);
+
+    color: var(--color);
+
+    font-family: var(--font-family);
+
+    font-size: var(--font-size);
 
     text-align: center;
     text-decoration: none;
@@ -32,19 +39,14 @@
 
     white-space: normal;
 
-    font-size: var(--font-size);
-    font-family: var(--font-family);
+    cursor: pointer;
+    user-select: none;
 
-    color: var(--color);
+    -webkit-appearance: none;
 
-    background-color: var(--background);
-
-    border-width: var(--border-width);
-    border-style: solid;
-    border-color: var(--border-color);
-    border-radius: var(--border-radius);
-
-    padding: var(--padding-vertical) var(--padding-horizontal);
+    appearance: none;
+    box-sizing: border-box;
+    pointer-events: auto;
 }
  
 :host(:hover) {

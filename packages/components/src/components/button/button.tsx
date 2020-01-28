@@ -1,4 +1,11 @@
-import { Component, ComponentInterface, Element, Host, Prop, h } from '@stencil/core'
+import {
+  Component,
+  ComponentInterface,
+  Element,
+  Host,
+  Prop,
+  h
+} from '@stencil/core'
 
 @Component({
   tag: 'spd-button',
@@ -6,25 +13,26 @@ import { Component, ComponentInterface, Element, Host, Prop, h } from '@stencil/
   shadow: true
 })
 export class Button implements ComponentInterface {
-  
-  @Element() el!: HTMLElement;
+  @Element() el!: HTMLElement
 
   /**
    * If `true`, the user cannot interact with the button.
    */
-  @Prop({ 
-    reflect: true, 
+  @Prop({
+    reflect: true,
     attribute: 'disabled'
-  }) disabled = false;
+  })
+  disabled = false
 
   /**
    * Contains a URL or a URL fragment that the hyperlink points to.
    * If this property is set, an anchor tag will be rendered.
    */
-  @Prop({ 
-    reflect: true, 
+  @Prop({
+    reflect: true,
     attribute: 'href'
-  }) href?: string;
+  })
+  href?: string
 
   /**
    * Sets the ID of the button element
@@ -32,28 +40,32 @@ export class Button implements ComponentInterface {
   @Prop({
     reflect: true,
     attribute: 'id'
-  }) buttonId?: string;
+  })
+  buttonId?: string
 
   /**
    *  Name type of the button
-   */ 
-  @Prop() name: 'default' | 'primary' | 'positive' | 'negative' | 'link' = 'default'
+   */
+
+  @Prop() name: 'default' | 'primary' | 'positive' | 'negative' | 'link' =
+    'default'
 
   /**
-   * The type of button 
+   * The type of button
    */
   @Prop({
     reflect: true,
     attribute: 'type'
-  }) type: 'submit' | 'reset' | 'button' = 'button';
+  })
+  type: 'submit' | 'reset' | 'button' = 'button'
 
   render() {
     const { disabled, href, name } = this
-    const tagType = href !== undefined ? 'link' as any : 'button';
+    const tagType = href !== undefined ? ('link' as any) : 'button'
 
     return (
       <Host
-        aria-disabled={ disabled ? 'true' : 'false' }
+        aria-disabled={disabled ? 'true' : 'false'}
         class={{
           [`${name}`]: true,
           ['is-disabled']: disabled
