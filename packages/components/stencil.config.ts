@@ -1,5 +1,7 @@
 import { Config } from '@stencil/core'
 import { sass } from '@stencil/sass'
+import { postcss } from '@stencil/postcss'
+import autoprefixer from 'autoprefixer'
 
 export const config: Config = {
   namespace: 'components',
@@ -7,6 +9,13 @@ export const config: Config = {
   plugins: [
     sass({
       includePaths: ['node_modules']
+    }),
+    postcss({
+      plugins: [
+        autoprefixer({
+          cascade: false
+        })
+      ]
     })
   ],
   outputTargets: [

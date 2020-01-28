@@ -31,6 +31,7 @@ Button component for the Speedbird design system
 
 | Property   | Attribute  | Description                                                                                                             | Type                                                           | Default     |
 | ---------- | ---------- | ----------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | ----------- |
+| `buttonId` | `id`       | Sets the ID of the button element                                                                                       | `string \| undefined`                                          | `undefined` |
 | `disabled` | `disabled` | If `true`, the user cannot interact with the button.                                                                    | `boolean`                                                      | `false`     |
 | `href`     | `href`     | Contains a URL or a URL fragment that the hyperlink points to. If this property is set, an anchor tag will be rendered. | `string \| undefined`                                          | `undefined` |
 | `name`     | `name`     | Name type of the button                                                                                                 | `"default" \| "link" \| "negative" \| "positive" \| "primary"` | `'default'` |

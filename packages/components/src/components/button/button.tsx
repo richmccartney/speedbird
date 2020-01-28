@@ -27,6 +27,14 @@ export class Button implements ComponentInterface {
   }) href?: string;
 
   /**
+   * Sets the ID of the button element
+   */
+  @Prop({
+    reflect: true,
+    attribute: 'id'
+  }) buttonId?: string;
+
+  /**
    *  Name type of the button
    */ 
   @Prop() name: 'default' | 'primary' | 'positive' | 'negative' | 'link' = 'default'

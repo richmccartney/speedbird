@@ -12,6 +12,10 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 export namespace Components {
   interface SpdButton {
     /**
+    * Sets the ID of the button element
+    */
+    'buttonId'?: string;
+    /**
     * If `true`, the user cannot interact with the button.
     */
     'disabled': boolean;
@@ -45,6 +49,10 @@ declare global {
 
 declare namespace LocalJSX {
   interface SpdButton {
+    /**
+    * Sets the ID of the button element
+    */
+    'buttonId'?: string;
     /**
     * If `true`, the user cannot interact with the button.
     */
