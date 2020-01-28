@@ -137,7 +137,7 @@ jobs:
           working_directory: /tmp/workspace/packages/design-tokens
       - save_cache: *save-cache-design-tokens
       - run:
-          command: npm run build -- --ci
+          command: npm run build
           working_directory: /tmp/workspace/packages/design-tokens
       - save_cache: *save-cache-design-tokens
       - persist_to_workspace:
