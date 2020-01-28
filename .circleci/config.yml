@@ -87,7 +87,6 @@ jobs:
   build-components:
     <<: *defaults
     steps:
-      - checkout
       - attach_workspace:
           at: ~/repo
       - restore_cache: *restore-cache-components
@@ -108,7 +107,6 @@ jobs:
   build-styles:
     <<: *defaults
     steps:
-      - checkout
       - attach_workspace:
           at: ~/repo
       - restore_cache: *restore-cache-styles
@@ -128,7 +126,6 @@ jobs:
   build-design-tokens:
     <<: *defaults
     steps:
-      - checkout
       - attach_workspace:
           at: ~/repo
       - restore_cache: *restore-cache-design-tokens
@@ -148,7 +145,6 @@ jobs:
   build-icons:
     <<: *defaults
     steps:
-      - checkout
       - attach_workspace:
           at: ~/repo
       - restore_cache: *restore-cache-icons
@@ -169,7 +165,6 @@ jobs:
   test-styles-clean-build:
     <<: *defaults
     steps:
-      - checkout
       - attach_workspace:
           at: ~/repo
       - run:
@@ -180,7 +175,6 @@ jobs:
   test-components-clean-build:
     <<: *defaults
     steps:
-      - checkout
       - attach_workspace:
           at: ~/repo
       - run:
@@ -191,7 +185,6 @@ jobs:
   test-design-tokens-clean-build:
     <<: *defaults
     steps:
-      - checkout
       - attach_workspace:
           at: ~/repo
       - run:
@@ -202,7 +195,6 @@ jobs:
   test-icons-clean-build:
     <<: *defaults
     steps:
-      - checkout
       - attach_workspace:
           at: ~/repo
       - run:
@@ -213,7 +205,6 @@ jobs:
   test-styles-lint:
     <<: *defaults
     steps:
-      - checkout
       - attach_workspace:
           at: ~/repo
       - run:
@@ -223,7 +214,6 @@ jobs:
   test-components-lint:
     <<: *defaults
     steps:
-      - checkout
       - attach_workspace:
           at: ~/repo
       - run:
@@ -233,7 +223,6 @@ jobs:
   test-components-spec:
     <<: *defaults
     steps:
-      - checkout
       - attach_workspace:
           at: ~/repo
       - run:
@@ -281,10 +270,6 @@ workflows:
           requires: [test-components-clean-build]
       - publish:
           requires:
-            - test-design-tokens-clean-build
-            - test-icons-clean-build
-            - test-styles-clean-build
-            - test-components-clean-build
             - test-components-lint
             - test-styles-lint
             - test-components-spec
