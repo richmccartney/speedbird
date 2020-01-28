@@ -149,15 +149,15 @@ jobs:
           command: npm run test --ci
           working_directory: /tmp/workspace/packages/components
   
-  publish:
-    <<: *defaults
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /tmp/workspace
-      - run:
-          command: npm run lerna publish
-          working_directory: /tmp/workspace
+  # publish:
+  #   <<: *defaults
+  #   steps:
+  #     - checkout
+  #     - attach_workspace:
+  #         at: /tmp/workspace
+  #     - run:
+  #         command: npm run lerna publish
+  #         working_directory: /tmp/workspace
 
 workflows:
   version: 2
@@ -178,15 +178,15 @@ workflows:
           requires: [build-styles]
       - test-components-spec:
           requires: [build-components]
-      - publish:
-          requires:
-            - build-components
-            - build-styles
-            - test-styles-clean-build
-            - test-components-clean-build
-            - test-components-lint
-            - test-styles-lint
-            - test-components-spec
-          filters:
-            branches:
-              only: master
+      # - publish:
+      #     requires:
+      #       - build-components
+      #       - build-styles
+      #       - test-styles-clean-build
+      #       - test-components-clean-build
+      #       - test-components-lint
+      #       - test-styles-lint
+      #       - test-components-spec
+      #     filters:
+      #       branches:
+      #         only: master
