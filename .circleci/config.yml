@@ -18,6 +18,8 @@ aliases:
       key: dependency-cache-{{ checksum "packages/components/package.json" }}-3
       paths:
         - packages/components/node_modules
+        - packages/components/dist
+        - packages/components/loader
 
   - &restore-cache-components-stencil
       keys:
@@ -37,6 +39,8 @@ aliases:
       key: dependency-cache-{{ checksum "packages/icons/package.json" }}-3
       paths:
         - packages/icons/node_modules
+        - packages/icons/dist
+        - packages/icons/loader
 
   - &restore-cache-icons-stencil
       keys:
@@ -56,6 +60,7 @@ aliases:
       key: dependency-cache-{{ checksum "packages/styles/package.json" }}-3
       paths:
         - packages/styles/node_modules
+        - packages/styles/dist
 
   - &restore-cache-design-tokens
       keys:
@@ -65,6 +70,7 @@ aliases:
       key: dependency-cache-{{ checksum "packages/design-tokens/package.json" }}-3
       paths:
         - packages/design-tokens/node_modules
+        - packages/design-tokens/dist
 
 defaults: &defaults
   docker:
@@ -243,7 +249,7 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run:
           name: Publish
-          command: npm run lerna publish
+          command: npm run release
 
 workflows:
   version: 2
