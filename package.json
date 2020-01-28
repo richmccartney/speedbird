@@ -7,13 +7,18 @@
     "husky": "^4.0.7",
     "lerna": "^3.20.2",
     "semantic-release": "^17.0.0",
+    "semantic-release-commit-filter": "^1.0.2",
     "semantic-release-monorepo": "^6.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richmccartney/speedbird.git"
   },
   "scripts": {
     "setup": "lerna exec npm install",
     "bootsrap": "lerna boostrap",
     "clean": "lerna clean",
-    "release": "lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo"
+    "release": "lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-commit-filter"
   },
   "workspaces": [
     "packages/*"

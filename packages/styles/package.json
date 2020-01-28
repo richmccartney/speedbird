@@ -3,7 +3,7 @@
   "version": "0.0.5",
   "description": "> TODO: description",
   "author": "Richard McCartney <richard@mccartney.io>",
-  "homepage": "https://github.com/richmccartney/design-system#readme",
+  "homepage": "https://github.com/richmccartney/speedbird#readme",
   "license": "ISC",
   "directories": {
     "src": "src"
@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/richmccartney/design-system.git"
+    "url": "git+https://github.com/richmccartney/speedbird.git"
   },
   "scripts": {
     "build": "node-sass src/speedbird.scss dist/speedbird.css",
@@ -24,7 +24,7 @@
     "@speedbird/design-tokens": "^0.0.4"
   },
   "bugs": {
-    "url": "https://github.com/richmccartney/design-system/issues"
+    "url": "https://github.com/richmccartney/speedbird/issues"
   },
   "sass": {
     "includePaths": [
