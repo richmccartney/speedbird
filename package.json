@@ -8,7 +8,8 @@
     "lerna": "^3.20.2"
   },
   "scripts": {
-    "setup": "lerna bootstrap --no-ci",
+    "setup": "lerna exec npm install",
+    "bootsrap": "lerna boostrap",
     "clean": "lerna clean"
   },
   "workspaces": [
