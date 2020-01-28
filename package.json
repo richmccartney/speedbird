@@ -11,7 +11,7 @@
     "setup": "lerna exec npm install",
     "bootsrap": "lerna boostrap",
     "clean": "lerna clean",
-    "release": "lerna publish from-git"
+    "release": "lerna publish"
   },
   "workspaces": [
     "packages/*"

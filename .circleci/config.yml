@@ -248,6 +248,8 @@ jobs:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run:
+          name: Ignore files
+          command: git update-index --assume-unchanged ~/repo/.npmrc
           name: Publish
           command: npm run release
 
