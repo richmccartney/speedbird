@@ -134,11 +134,11 @@ jobs:
       - restore_cache: *restore-cache-design-tokens
       - run:
           command: npm install
-          working_directory: /tmp/workspace/packages/design-token
+          working_directory: /tmp/workspace/packages/design-tokens
       - save_cache: *save-cache-design-tokens
       - run:
           command: npm run build -- --ci
-          working_directory: /tmp/workspace/packages/design-token
+          working_directory: /tmp/workspace/packages/design-tokens
       - save_cache: *save-cache-design-tokens
       - persist_to_workspace:
           root: /tmp/workspace
