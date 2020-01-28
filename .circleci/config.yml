@@ -157,7 +157,7 @@ jobs:
           at: /tmp/workspace
       - run:
           command: npm run lerna publish
-          working_directory: /tmp/workspace/
+          working_directory: /tmp/workspace
 
 workflows:
   version: 2
@@ -173,11 +173,11 @@ workflows:
       - test-styles-clean-build:
           requires: [build-styles]
       - test-components-lint:
-          requires: [test-components-clean-build]
+          requires: [build-components]
       - test-styles-lint:
-          requires: [test-styles-clean-build]
+          requires: [build-styles]
       - test-components-spec:
-          requires: [test-components-lint]
+          requires: [build-components]
       - publish:
           requires:
             - build-components
