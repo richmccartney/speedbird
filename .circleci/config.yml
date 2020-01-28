@@ -125,7 +125,7 @@ jobs:
           paths:
             - "*"
 
-  build-tokens:
+  build-design-tokens:
     <<: *defaults
     steps:
       - checkout
