@@ -29,6 +29,25 @@ aliases:
         - packages/components/.stencil
         - packages/components/screenshot/images
 
+  - &restore-cache-icons
+      keys:
+        - dependency-cache-{{ checksum "packages/icons/package.json" }}-3
+
+  - &save-cache-icons
+      key: dependency-cache-{{ checksum "packages/icons/package.json" }}-3
+      paths:
+        - packages/icons/node_modules
+
+  - &restore-cache-icons-stencil
+      keys:
+        - stencil-cache-2
+
+  - &save-cache-icons-stencil
+      key: stencil-cache-2
+      paths:
+        - packages/icons/.stencil
+        - packages/icons/screenshot/images
+
   - &restore-cache-styles
       keys:
         - dependency-cache-{{ checksum "packages/styles/package.json" }}-3
@@ -37,6 +56,15 @@ aliases:
       key: dependency-cache-{{ checksum "packages/styles/package.json" }}-3
       paths:
         - packages/styles/node_modules
+
+  - &restore-cache-design-tokens
+      keys:
+        - dependency-cache-{{ checksum "packages/design-tokens/package.json" }}-3
+
+  - &save-cache-design-tokens
+      key: dependency-cache-{{ checksum "packages/design-tokens/package.json" }}-3
+      paths:
+        - packages/design-tokens/node_modules
 
 defaults: &defaults
   docker:
@@ -96,6 +124,47 @@ jobs:
           root: /tmp/workspace
           paths:
             - "*"
+
+  build-tokens:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - restore_cache: *restore-cache-design-token
+      - run:
+          command: npm install
+          working_directory: /tmp/workspace/packages/design-token
+      - save_cache: *save-cache-design-token
+      - run:
+          command: npm run build -- --ci
+          working_directory: /tmp/workspace/packages/design-token
+      - save_cache: *save-cache-design-token
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - "*"
+
+  build-icons:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - restore_cache: *restore-cache-icons
+      - restore_cache: *restore-cache-icons-stencil
+      - run:
+          command: npm install
+          working_directory: /tmp/workspace/packages/icons
+      - save_cache: *save-cache-icons
+      - run:
+          command: npm run build -- --ci
+          working_directory: /tmp/workspace/packages/icons
+      - save_cache: *save-cache-icons-stencil
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - "*"
   
   test-styles-clean-build:
     <<: *defaults
@@ -108,16 +177,6 @@ jobs:
           command: git diff --exit-code
           working_directory: /tmp/workspace/packages/styles
 
-  test-styles-lint:
-    <<: *defaults
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /tmp/workspace
-      - run:
-          command: npm run lint.sass
-          working_directory: /tmp/workspace/packages/styles
-
   test-components-clean-build:
     <<: *defaults
     steps:
@@ -128,6 +187,38 @@ jobs:
           name: Checking clean build
           command: git diff --exit-code
           working_directory: /tmp/workspace/packages/components
+
+  test-design-tokens-clean-build:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Checking clean build
+          command: git diff --exit-code
+          working_directory: /tmp/workspace/packages/design-tokens
+
+  test-icons-clean-build:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Checking clean build
+          command: git diff --exit-code
+          working_directory: /tmp/workspace/packages/icons
+
+  test-styles-lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          command: npm run lint.sass
+          working_directory: /tmp/workspace/packages/styles
 
   test-components-lint:
     <<: *defaults
@@ -149,15 +240,15 @@ jobs:
           command: npm run test --ci
           working_directory: /tmp/workspace/packages/components
   
-  # publish:
-  #   <<: *defaults
-  #   steps:
-  #     - checkout
-  #     - attach_workspace:
-  #         at: /tmp/workspace
-  #     - run:
-  #         command: npm run lerna publish
-  #         working_directory: /tmp/workspace
+  publish:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          command: npm run lerna publish
+          working_directory: /tmp/workspace
 
 workflows:
   version: 2
@@ -168,16 +259,24 @@ workflows:
           requires: [build]
       - build-styles:
           requires: [build]
+      - build-icons:
+          requires: [build]
+      - build-design-tokens:
+          requires: [build]
       - test-components-clean-build:
           requires: [build-components]
       - test-styles-clean-build:
           requires: [build-styles]
+      - test-icons-clean-build:
+          requires: [build-icons]
+      - test-design-tokens-clean-build:
+          requires: [build-design-tokens]
       - test-components-lint:
-          requires: [build-components]
+          requires: [test-components-clean-build]
       - test-styles-lint:
           requires: [build-styles]
       - test-components-spec:
-          requires: [build-components]
+          requires: [test-components-clean-build]
       # - publish:
       #     requires:
       #       - build-components

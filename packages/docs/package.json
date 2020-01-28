@@ -10,7 +10,7 @@
     "src": "src"
   },
   "files": [
-    "src"
+    "src/"
   ],
   "dependencies": {
     "@speedbird/components": "^0.0.6",

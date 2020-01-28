@@ -10,7 +10,7 @@
     "src": "src"
   },
   "files": [
-    "dist"
+    "dist/"
   ],
   "scripts": {
     "build": "style-dictionary build",

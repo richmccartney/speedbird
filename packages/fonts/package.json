@@ -9,7 +9,7 @@
     "src": "src"
   },
   "files": [
-    "src"
+    "src/"
   ],
   "repository": {
     "type": "git",
