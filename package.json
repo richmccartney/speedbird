@@ -10,7 +10,8 @@
   "scripts": {
     "setup": "lerna exec npm install",
     "bootsrap": "lerna boostrap",
-    "clean": "lerna clean"
+    "clean": "lerna clean",
+    "release": "lerna publish"
   },
   "workspaces": [
     "packages/*"
