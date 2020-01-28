@@ -250,6 +250,7 @@ jobs:
       - run:
           name: Ignore files
           command: git update-index --assume-unchanged ~/repo/.npmrc
+      - run:
           name: Publish
           command: npm run release
 
