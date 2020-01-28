@@ -12,13 +12,14 @@
     --border-width: #{$button-border-width};
     --font-family: #{$button-font-family};
     --font-size: #{$button-font-size};
+    --line-height: #{$button-line-height};
     --padding-vertical: #{$button-padding};
     --padding-horizontal: #{$button-padding * 2};
         
     display: inline-block;
     position: relative;
 
-    padding: var(--padding-vertical) var(--padding-horizontal);
+    padding: 0 var(--padding-horizontal);
 
     border-width: var(--border-width);
     border-style: solid;
@@ -32,6 +33,8 @@
     font-family: var(--font-family);
 
     font-size: var(--font-size);
+
+    line-height: var(--line-height);
 
     text-align: center;
     text-decoration: none;
