@@ -8,7 +8,7 @@ describe('button', () => {
       html: `<spd-button></spd-button>`,
     });
     expect(page.root).toEqualHtml(
-        `<spd-button class="default" role="button" type="button">
+        `<spd-button aria-disabled="false" class="default" role="button" type="button">
             <mock:shadow-root>
                 <slot></slot>
             </mock:shadow-root>
