@@ -1,3 +1,16 @@
+# [@speedbird/design-tokens-v0.1.0](https://github.com/richmccartney/speedbird.git/compare/v0.0.2...v0.1.0) (2020-01-30)
+
+
+### Features
+
+* **design-tokens:** including new colour tokens ([7747df7](https://github.com/richmccartney/speedbird.git/commit/7747df7ec506feeffaf98f7e868a2bea3b53e9e4))
+* example button component and impoving test / linting features ([fb7dc07](https://github.com/richmccartney/speedbird.git/commit/fb7dc0742884ef2e779f43057bc18500a0cae905))
+
+
+### Reverts
+
+* Revert "chore(release): updated release notes and package versions" ([9f03541](https://github.com/richmccartney/speedbird.git/commit/9f03541ebf8bdf1091ad6f88042129a6e093d7de))
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
