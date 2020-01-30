@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "build": "stencil build --docs",
-    "build.ci": "build -- --ci",
+    "build.ci": "npm run build -- --ci",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",

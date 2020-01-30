@@ -17,7 +17,7 @@
   },
   "scripts": {
     "build": "node-sass src/speedbird.scss dist/speedbird.css",
-    "build.ci": "build",
+    "build.ci": "npm run build",
     "lint.sass": "stylelint 'src/**/*.scss'",
     "lint.sass.fix": "npm run lint.sass -- --fix"
   },
