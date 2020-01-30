@@ -248,8 +248,11 @@ jobs:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run:
+          name: Setup all packages
+          command: npm run setup
+      - run:
           name: Ignore files
-          command: git update-index --assume-unchanged ~/repo/.npmrc
+          command: git update-index --assume-unchanged ~/repo/.npmrc ~/repo/packages/components/package-lock.json ~/repo/packages/design-tokens/package-lock.json ~/repo/packages/docs/package-lock.json ~/repo/packages/fonts/package-lock.json ~/repo/packages/icons/package-lock.json ~/repo/packages/styles/package-lock.json
       - run:
           name: Build packages
           command: npm run build
