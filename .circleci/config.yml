@@ -172,15 +172,15 @@ jobs:
           paths:
             - "*"
   
-  test-clean-build:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/repo
-      - run:
-          name: Checking clean build
-          command: git diff --exit-code
-          working_directory: ~/repo
+  # test-clean-build:
+  #   <<: *defaults
+  #   steps:
+  #     - attach_workspace:
+  #         at: ~/repo
+  #     - run:
+  #         name: Checking clean build
+  #         command: git diff --exit-code
+  #         working_directory: ~/repo
 
   test-styles-lint:
     <<: *defaults
@@ -239,14 +239,13 @@ workflows:
       - test-clean-build:
           requires: [build]
       - test-components-lint:
-          requires: [test-clean-build]
+          requires: [build-components]
       - test-styles-lint:
-          requires: [test-clean-build]
+          requires: [build-styles]
       - test-components-spec:
-          requires: [test-clean-build]
+          requires: [build-components]
       - publish:
           requires:
-            - test-clean-build
             - test-components-lint
             - test-styles-lint
             - test-components-spec
