@@ -290,6 +290,8 @@ workflows:
           requires: [test-components-clean-build]
       - publish:
           requires:
+            - test-icons-clean-build
+            - test-design-tokens-clean-build
             - test-components-lint
             - test-styles-lint
             - test-components-spec
