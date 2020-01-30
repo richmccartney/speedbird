@@ -245,6 +245,9 @@ jobs:
       - restore_cache: *restore-cache-icons
       - restore_cache: *restore-cache-design-tokens
       - run:
+          name: Build
+          command: npm run build
+      - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run:
