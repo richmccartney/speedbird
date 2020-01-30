@@ -236,8 +236,6 @@ workflows:
           requires: [build]
       - build-design-tokens:
           requires: [build]
-      - test-clean-build:
-          requires: [build]
       - test-components-lint:
           requires: [build-components]
       - test-styles-lint:
