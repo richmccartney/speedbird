@@ -242,7 +242,9 @@ jobs:
       - restore_cache: *restore-cache
       - restore_cache: *restore-cache-styles
       - restore_cache: *restore-cache-components
+      - restore_cache: *restore-cache-components-stencil
       - restore_cache: *restore-cache-icons
+      - restore_cache: *restore-cache-icons-stencil
       - restore_cache: *restore-cache-design-tokens
       - run:
           name: Build
