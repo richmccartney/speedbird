@@ -9,6 +9,12 @@ aliases:
       key: dependency-cache-{{ checksum "package.json" }}-3
       paths:
         - node_modules
+        - packages/components/node_modules
+        - packages/design-tokens/node_modules
+        - packages/docs/node_modules
+        - packages/fonts/node_modules
+        - packages/icons/node_modules
+        - packages/styles/node_modules
 
   - &restore-cache-components
       keys:
@@ -78,6 +84,10 @@ jobs:
       - checkout
       - restore_cache: *restore-cache
       - run: npm install
+      - save_cache: *save-cache
+      - run:
+          name: Setup all packages
+          command: npm run setup
       - save_cache: *save-cache
       - persist_to_workspace:
           root: ~/repo
@@ -235,20 +245,13 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - restore_cache: *restore-cache
-      - restore_cache: *restore-cache-styles
-      - restore_cache: *restore-cache-components
-      - restore_cache: *restore-cache-icons
-      - restore_cache: *restore-cache-design-tokens
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run:
           name: Build
           command: npm run build
-      - persist_to_workspace:
-          root: ~/repo
-          paths:
-            - "*"
+          working_directory: ~/repo
 
 workflows:
   version: 2
