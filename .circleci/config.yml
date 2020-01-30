@@ -237,9 +237,10 @@ jobs:
 
   publish:
     <<: *defaults
+    working_directory: ~/repo
     steps:
-      - attach_workspace:
-          at: ~/repo
+      - checkout:
+          path: ~/repo
       - restore_cache: *restore-cache
       - restore_cache: *restore-cache-styles
       - restore_cache: *restore-cache-components
