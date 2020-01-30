@@ -1,6 +1,6 @@
 # spd-button
 
-Button component for the Speedbird design system
+Button component for the Speedbird design system. Test
 
 <!-- Auto Generated Below -->
 
