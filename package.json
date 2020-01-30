@@ -16,9 +16,10 @@
   },
   "scripts": {
     "setup": "lerna exec npm install",
+    "build": "lerna exec npm run build",
     "bootsrap": "lerna boostrap",
     "clean": "lerna clean",
-    "release": "lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-commit-filter"
+    "release": "npm run build && lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-commit-filter"
   },
   "workspaces": [
     "packages/*"
