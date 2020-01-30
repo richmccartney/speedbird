@@ -20,7 +20,6 @@
     "@speedbird/styles": "^0.0.5"
   },
   "scripts": {
-    "build": "echo \"Build\" && exit 1",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "gitHead": "7b73a1749a5ec768dcabd177a4293b5bf3f3d5b8"

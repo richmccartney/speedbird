@@ -2,13 +2,21 @@
   "description": "Design system mono-repo root package.json, used mainly to execute setup/build scripts. This package is not published.",
   "private": false,
   "devDependencies": {
+    "@semantic-release/changelog": "^3.0.1",
+    "@semantic-release/commit-analyzer": "^6.1.0",
+    "@semantic-release/git": "7.0.5",
+    "@semantic-release/github": "5.2.1",
+    "@semantic-release/npm": "5.0.5",
+    "@semantic-release/release-notes-generator": "7.1.2",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "^3.0.2",
     "husky": "^4.0.7",
     "lerna": "^3.20.2",
-    "semantic-release": "^17.0.0",
+    "semantic-release": "^17.0.1",
     "semantic-release-commit-filter": "^1.0.2",
-    "semantic-release-monorepo": "^6.1.1"
+    "semantic-release-monorepo": "^6.1.1",
+    "semantic-release-monorepo-hooks": "^2.9.5",
+    "semantic-release-plugin-decorators": "^2.0.0"
   },
   "repository": {
     "type": "git",
@@ -16,10 +24,10 @@
   },
   "scripts": {
     "setup": "lerna exec npm install",
-    "build": "lerna exec npm run build",
+    "build": "lerna run build --parallel",
     "bootsrap": "lerna boostrap",
     "clean": "lerna clean",
-    "release": "npm run build && lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-commit-filter"
+    "release": "lerna exec --concurrency 1 'npx --no-install semantic-release -e semantic-release-monorepo' && node -e 'require('semantic-release-monorepo-hooks').hookAfterAll()'"
   },
   "workspaces": [
     "packages/*"
