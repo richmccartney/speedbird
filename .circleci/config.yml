@@ -9,12 +9,6 @@ aliases:
       key: dependency-cache-{{ checksum "package.json" }}-3
       paths:
         - node_modules
-        - packages/components/node_modules
-        - packages/design-tokens/node_modules
-        - packages/docs/node_modules
-        - packages/fonts/node_modules
-        - packages/icons/node_modules
-        - packages/styles/node_modules
 
   - &restore-cache-components
       keys:
@@ -24,6 +18,8 @@ aliases:
       key: dependency-cache-{{ checksum "packages/components/package.json" }}-3
       paths:
         - packages/components/node_modules
+        - packages/components/dist
+        - packages/components/loader
 
   - &restore-cache-components-stencil
       keys:
@@ -43,6 +39,8 @@ aliases:
       key: dependency-cache-{{ checksum "packages/icons/package.json" }}-3
       paths:
         - packages/icons/node_modules
+        - packages/icons/dist
+        - packages/icons/loader
 
   - &restore-cache-icons-stencil
       keys:
@@ -62,6 +60,7 @@ aliases:
       key: dependency-cache-{{ checksum "packages/styles/package.json" }}-3
       paths:
         - packages/styles/node_modules
+        - packages/styles/dist
 
   - &restore-cache-design-tokens
       keys:
@@ -71,6 +70,7 @@ aliases:
       key: dependency-cache-{{ checksum "packages/design-tokens/package.json" }}-3
       paths:
         - packages/design-tokens/node_modules
+        - packages/design-tokens/dist
 
 defaults: &defaults
   docker:
@@ -84,10 +84,6 @@ jobs:
       - checkout
       - restore_cache: *restore-cache
       - run: npm install
-      - save_cache: *save-cache
-      - run:
-          name: Setup all packages
-          command: npm run setup
       - save_cache: *save-cache
       - persist_to_workspace:
           root: ~/repo
@@ -172,15 +168,45 @@ jobs:
           paths:
             - "*"
   
-  # test-clean-build:
-  #   <<: *defaults
-  #   steps:
-  #     - attach_workspace:
-  #         at: ~/repo
-  #     - run:
-  #         name: Checking clean build
-  #         command: git diff --exit-code
-  #         working_directory: ~/repo
+  test-styles-clean-build:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Checking clean build
+          command: git diff --exit-code
+          working_directory: ~/repo/packages/styles
+
+  test-components-clean-build:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Checking clean build
+          command: git diff --exit-code
+          working_directory: ~/repo/packages/components
+
+  test-design-tokens-clean-build:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Checking clean build
+          command: git diff --exit-code
+          working_directory: ~/repo/packages/design-tokens
+
+  test-icons-clean-build:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Checking clean build
+          command: git diff --exit-code
+          working_directory: ~/repo/packages/icons
 
   test-styles-lint:
     <<: *defaults
@@ -212,16 +238,21 @@ jobs:
   publish:
     <<: *defaults
     steps:
-      - attach_workspace:
-          at: ~/repo
+      - checkout
       - restore_cache: *restore-cache
+      - restore_cache: *restore-cache-styles
+      - restore_cache: *restore-cache-components
+      - restore_cache: *restore-cache-icons
+      - restore_cache: *restore-cache-design-tokens
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run:
-          name: Build
-          command: npm run build
-          working_directory: ~/repo
+          name: Ignore files
+          command: git update-index --assume-unchanged ~/repo/.npmrc
+      - run:
+          name: Publish
+          command: npm run release
 
 workflows:
   version: 2
@@ -236,12 +267,20 @@ workflows:
           requires: [build]
       - build-design-tokens:
           requires: [build]
-      - test-components-lint:
+      - test-components-clean-build:
           requires: [build-components]
-      - test-styles-lint:
+      - test-styles-clean-build:
           requires: [build-styles]
+      - test-icons-clean-build:
+          requires: [build-icons]
+      - test-design-tokens-clean-build:
+          requires: [build-design-tokens]
+      - test-components-lint:
+          requires: [test-components-clean-build]
+      - test-styles-lint:
+          requires: [test-styles-clean-build]
       - test-components-spec:
-          requires: [build-components]
+          requires: [test-components-clean-build]
       - publish:
           requires:
             - test-components-lint
