@@ -172,7 +172,7 @@ jobs:
           paths:
             - "*"
   
-  test-styles-clean-build:
+  test-clean-build:
     <<: *defaults
     steps:
       - attach_workspace:
@@ -180,37 +180,7 @@ jobs:
       - run:
           name: Checking clean build
           command: git diff --exit-code
-          working_directory: ~/repo/packages/styles
-
-  test-components-clean-build:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/repo
-      - run:
-          name: Checking clean build
-          command: git diff --exit-code
-          working_directory: ~/repo/packages/components
-
-  test-design-tokens-clean-build:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/repo
-      - run:
-          name: Checking clean build
-          command: git diff --exit-code
-          working_directory: ~/repo/packages/design-tokens
-
-  test-icons-clean-build:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/repo
-      - run:
-          name: Checking clean build
-          command: git diff --exit-code
-          working_directory: ~/repo/packages/icons
+          working_directory: ~/repo
 
   test-styles-lint:
     <<: *defaults
@@ -266,22 +236,17 @@ workflows:
           requires: [build]
       - build-design-tokens:
           requires: [build]
-      - test-components-clean-build:
-          requires: [build-components]
-      - test-styles-clean-build:
-          requires: [build-styles]
-      - test-icons-clean-build:
-          requires: [build-icons]
-      - test-design-tokens-clean-build:
-          requires: [build-design-tokens]
+      - test-clean-build:
+          requires: [build]
       - test-components-lint:
-          requires: [test-components-clean-build]
+          requires: [test-clean-build]
       - test-styles-lint:
-          requires: [test-styles-clean-build]
+          requires: [test-clean-build]
       - test-components-spec:
-          requires: [test-components-clean-build]
+          requires: [test-clean-build]
       - publish:
           requires:
+            - test-clean-build
             - test-components-lint
             - test-styles-lint
             - test-components-spec
