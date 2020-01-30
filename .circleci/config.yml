@@ -3,35 +3,69 @@ version: 2
 aliases:
   - &restore-cache
       keys:
-        - dependency-cache-{{ checksum "package-lock.json" }}-{{ checksum "combined-package-lock.txt" }}
-        - dependency-cache
+        - dependency-cache-{{ checksum "package.json" }}-3
 
   - &save-cache
-      keys:
-        - dependency-cache-{{ checksum "package-lock.json" }}-{{ checksum "combined-package-lock.txt" }}
-        - dependency-cache
+      key: dependency-cache-{{ checksum "package.json" }}-3
       paths:
         - node_modules
+
+  - &restore-cache-components
+      keys:
+        - dependency-cache-{{ checksum "packages/components/package.json" }}-3
+
+  - &save-cache-components
+      key: dependency-cache-{{ checksum "packages/components/package.json" }}-3
+      paths:
         - packages/components/node_modules
+
+  - &restore-cache-components-stencil
+      keys:
+        - stencil-cache-2
+
+  - &save-cache-components-stencil
+      key: stencil-cache-2
+      paths:
         - packages/components/.stencil
-        - packages/design-tokens/node_modules
+        - packages/components/screenshot/images
+
+  - &restore-cache-icons
+      keys:
+        - dependency-cache-{{ checksum "packages/icons/package.json" }}-3
+
+  - &save-cache-icons
+      key: dependency-cache-{{ checksum "packages/icons/package.json" }}-3
+      paths:
         - packages/icons/node_modules
+
+  - &restore-cache-icons-stencil
+      keys:
+        - stencil-cache-2
+
+  - &save-cache-icons-stencil
+      key: stencil-cache-2
+      paths:
         - packages/icons/.stencil
-        - packages/fonts/node_modules
-        - packages/docs/node_modules
+        - packages/icons/screenshot/images
+
+  - &restore-cache-styles
+      keys:
+        - dependency-cache-{{ checksum "packages/styles/package.json" }}-3
+
+  - &save-cache-styles
+      key: dependency-cache-{{ checksum "packages/styles/package.json" }}-3
+      paths:
         - packages/styles/node_modules
 
-commands:
-  create_concatenated_package_lock:
-    description: "Concatenate all package-lock.json files recognized by lerna.js into single file. File is used as checksum source for part of caching key."
-    parameters:
-      filename:
-        type: string
-    steps:
-      - run:
-          name: Combine package-lock.json files to single file
-          command: npx lerna list -p -a | awk -F packages '{printf "\"packages%s/package-lock.json\" ", $2}' | xargs cat > << parameters.filename >>
-                 
+  - &restore-cache-design-tokens
+      keys:
+        - dependency-cache-{{ checksum "packages/design-tokens/package.json" }}-3
+
+  - &save-cache-design-tokens
+      key: dependency-cache-{{ checksum "packages/design-tokens/package.json" }}-3
+      paths:
+        - packages/design-tokens/node_modules
+
 defaults: &defaults
   docker:
     - image: circleci/node:10-browsers
@@ -42,9 +76,6 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - create_concatenated_package_lock:
-          filename: combined-package-lock.txt
-        ## Use combined-package-lock.text in cache key
       - restore_cache: *restore-cache
       - run: npm install
       - save_cache: *save-cache
@@ -58,16 +89,16 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      - restore_cache: *restore-cache
-      - restore_cache: *restore-cache
+      - restore_cache: *restore-cache-components
+      - restore_cache: *restore-cache-components-stencil
       - run:
           command: npm install
           working_directory: ~/repo/packages/components
-      - save_cache: *save-cache
+      - save_cache: *save-cache-components
       - run:
           command: npm run build -- --ci
           working_directory: ~/repo/packages/components
-      - save_cache: *save-cache
+      - save_cache: *save-cache-components-stencil
       - persist_to_workspace:
           root: ~/repo
           paths:
@@ -78,15 +109,15 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      - restore_cache: *restore-cache
+      - restore_cache: *restore-cache-styles
       - run:
           command: npm install
           working_directory: ~/repo/packages/styles
-      - save_cache: *save-cache
+      - save_cache: *save-cache-styles
       - run:
           command: npm run build -- --ci
           working_directory: ~/repo/packages/styles
-      - save_cache: *save-cache
+      - save_cache: *save-cache-styles
       - persist_to_workspace:
           root: ~/repo
           paths:
@@ -97,15 +128,15 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      - restore_cache: *restore-cache
+      - restore_cache: *restore-cache-design-tokens
       - run:
           command: npm install
           working_directory: ~/repo/packages/design-tokens
-      - save_cache: *save-cache
+      - save_cache: *save-cache-design-tokens
       - run:
           command: npm run build
           working_directory: ~/repo/packages/design-tokens
-      - save_cache: *save-cache
+      - save_cache: *save-cache-design-tokens
       - persist_to_workspace:
           root: ~/repo
           paths:
@@ -116,15 +147,16 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      - restore_cache: *restore-cache
+      - restore_cache: *restore-cache-icons
+      - restore_cache: *restore-cache-icons-stencil
       - run:
           command: npm install
           working_directory: ~/repo/packages/icons
-      - save_cache: *save-cache
+      - save_cache: *save-cache-icons
       - run:
           command: npm run build -- --ci
           working_directory: ~/repo/packages/icons
-      - save_cache: *save-cache
+      - save_cache: *save-cache-icons-stencil
       - persist_to_workspace:
           root: ~/repo
           paths:
@@ -199,23 +231,24 @@ jobs:
 
   publish:
     <<: *defaults
-    working_directory: ~/repo
     steps:
       - attach_workspace:
           at: ~/repo
-      - restore_cache: *restore-cache
-      - run:
-          name: Build
-          command: npm run build
+      - restore_cache: *restore_cache
+      - restore_cache: *restore-cache-styles
+      - restore_cache: *restore-cache-components
+      - restore_cache: *restore-cache-icons
+      - restore_cache: *restore-cache-design-tokens
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run:
-          name: Ignore files
-          command: git update-index --assume-unchanged ~/repo/.npmrc
-      - run:
-          name: Publish
-          command: npm run release
+          name: Build
+          command: npm run build
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - "*"
 
 workflows:
   version: 2
@@ -246,12 +279,9 @@ workflows:
           requires: [test-components-clean-build]
       - publish:
           requires:
-            - test-icons-clean-build
-            - test-design-tokens-clean-build
             - test-components-lint
             - test-styles-lint
             - test-components-spec
           filters:
             branches:
               only: master
-  
