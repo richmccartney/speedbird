@@ -1,3 +1,10 @@
+# [@speedbird/components-v0.2.0](https://github.com/richmccartney/speedbird.git/compare/v0.1.0...v0.2.0) (2020-01-30)
+
+
+### Features
+
+* **button:** test ([94a0f72](https://github.com/richmccartney/speedbird.git/commit/94a0f7286a1c1c249dc3168cdc5fa04a39ba3e83))
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
