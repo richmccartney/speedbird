@@ -25,6 +25,7 @@
   "scripts": {
     "setup": "lerna exec npm install",
     "build": "lerna run build --parallel",
+    "build.ci": "lerna run build.ci --parallel",
     "bootsrap": "lerna boostrap",
     "clean": "lerna clean"
   },

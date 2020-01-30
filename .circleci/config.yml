@@ -255,7 +255,7 @@ jobs:
           command: git update-index --assume-unchanged ~/repo/.npmrc ~/repo/packages/components/package-lock.json ~/repo/packages/design-tokens/package-lock.json ~/repo/packages/docs/package-lock.json ~/repo/packages/fonts/package-lock.json ~/repo/packages/icons/package-lock.json ~/repo/packages/styles/package-lock.json
       - run:
           name: Build packages
-          command: npm run build
+          command: npm run build.ci
       - run:
           name: Publish
           command: npm run lerna exec --concurrency 1 "npx --no-install semantic-release -e semantic-release-monorepo" && node -e "require('semantic-release-monorepo-hooks').hookAfterAll()"
