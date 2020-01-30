@@ -26,8 +26,7 @@
     "setup": "lerna exec npm install",
     "build": "lerna run build --parallel",
     "bootsrap": "lerna boostrap",
-    "clean": "lerna clean",
-    "release": "lerna exec --concurrency 1 "npx --no-install semantic-release -e semantic-release-monorepo" && "node -e require('semantic-release-monorepo-hooks').hookAfterAll()""
+    "clean": "lerna clean"
   },
   "workspaces": [
     "packages/*"

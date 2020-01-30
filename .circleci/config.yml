@@ -251,8 +251,11 @@ jobs:
           name: Ignore files
           command: git update-index --assume-unchanged ~/repo/.npmrc
       - run:
+          name: Build packages
+          command: npm run build
+      - run:
           name: Publish
-          command: npm run release
+          command: npm run lerna exec --concurrency 1 "npx --no-install semantic-release -e semantic-release-monorepo" && node -e "require('semantic-release-monorepo-hooks').hookAfterAll()"
 
 workflows:
   version: 2
