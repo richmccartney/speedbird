@@ -44,6 +44,13 @@ export class Button implements ComponentInterface {
   buttonId?: string
 
   /**
+   * Defines the aria label content
+   */
+  @Prop({
+    reflect: true
+  }) ariaLabel: string
+
+  /**
    *  Name type of the button
    */
 
@@ -60,12 +67,13 @@ export class Button implements ComponentInterface {
   type: 'submit' | 'reset' | 'button' = 'button'
 
   render() {
-    const { disabled, href, name } = this
+    const { disabled, href, name, ariaLabel } = this
     const tagType = href !== undefined ? ('link' as any) : 'button'
 
     return (
       <Host
         aria-disabled={disabled ? 'true' : 'false'}
+        aria-label={ariaLabel}
         class={{
           [`${name}`]: true,
           ['is-disabled']: disabled
