@@ -253,7 +253,7 @@ jobs:
           command: yarn setup
       - run:
           name: Ignore files
-          command: git update-index --assume-unchanged ~/repo/.npmrc ~/repo/packages/components/package-lock.json ~/repo/packages/design-tokens/package-lock.json ~/repo/packages/docs/package-lock.json ~/repo/packages/fonts/package-lock.json ~/repo/packages/icons/package-lock.json ~/repo/packages/styles/package-lock.json
+          command: git update-index --assume-unchanged ~/repo/.npmrc ~/repo/yarn.lock ~/repo/packages/components/package-lock.json ~/repo/packages/design-tokens/package-lock.json ~/repo/packages/docs/package-lock.json ~/repo/packages/fonts/package-lock.json ~/repo/packages/icons/package-lock.json ~/repo/packages/styles/package-lock.json
       - run:
           name: Build packages
           command: yarn build.ci
