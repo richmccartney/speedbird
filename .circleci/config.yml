@@ -10,6 +10,7 @@ aliases:
       paths:
         - ~/.cache/yarn
 
+
   - &restore-cache-components
       keys:
         - dependency-cache-{{ checksum "packages/components/package.json" }}-3
@@ -74,7 +75,7 @@ aliases:
 
 defaults: &defaults
   docker:
-    - image: circleci/node:10-browsers
+    - image: circleci/node:12-browsers
   working_directory: ~/repo
 
 jobs:
@@ -284,13 +285,10 @@ workflows:
           requires: [build-components]
       - test-styles-lint:
           requires: [test-styles-clean-build]
-      - test-components-spec:
-          requires: [build-components]
       - publish:
           requires:
             - test-components-lint
             - test-styles-lint
-            - test-components-spec
           filters:
             branches:
               only: master
