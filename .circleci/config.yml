@@ -274,8 +274,6 @@ workflows:
           requires: [build]
       - build-design-tokens:
           requires: [build]
-      - test-components-clean-build:
-          requires: [build-components]
       - test-styles-clean-build:
           requires: [build-styles]
       - test-icons-clean-build:
@@ -283,11 +281,11 @@ workflows:
       - test-design-tokens-clean-build:
           requires: [build-design-tokens]
       - test-components-lint:
-          requires: [test-components-clean-build]
+          requires: [build-components]
       - test-styles-lint:
           requires: [test-styles-clean-build]
       - test-components-spec:
-          requires: [test-components-clean-build]
+          requires: [build-components]
       - publish:
           requires:
             - test-components-lint
