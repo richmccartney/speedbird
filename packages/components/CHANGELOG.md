@@ -1,3 +1,10 @@
+# [@speedbird/components-v0.3.0](https://github.com/richmccartney/speedbird.git/compare/v0.2.0...v0.3.0) (2020-08-15)
+
+
+### Features
+
+* **accessibility:** adds the aria label to the button component to improve the accessibility ([50e495e](https://github.com/richmccartney/speedbird.git/commit/50e495e99800a4146de09a26986e07aabcd2e893))
+
 # [@speedbird/components-v0.2.0](https://github.com/richmccartney/speedbird.git/compare/v0.1.0...v0.2.0) (2020-01-30)
 
 
