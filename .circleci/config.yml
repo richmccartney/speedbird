@@ -269,22 +269,22 @@ workflows:
       - build
       - build-components:
           requires: [build]
-      - build-styles:
-          requires: [build]
+      # - build-styles:
+      #     requires: [build]
       - build-icons:
           requires: [build]
       - build-design-tokens:
           requires: [build]
-      - test-styles-clean-build:
-          requires: [build-styles]
+      # - test-styles-clean-build:
+      #     requires: [build-styles]
       - test-icons-clean-build:
           requires: [build-icons]
       - test-design-tokens-clean-build:
           requires: [build-design-tokens]
       - test-components-lint:
           requires: [build-components]
-      - test-styles-lint:
-          requires: [test-styles-clean-build]
+      # - test-styles-lint:
+      #     requires: [test-styles-clean-build]
       - publish:
           requires:
             - test-components-lint
