@@ -48,7 +48,8 @@ export class Button implements ComponentInterface {
    */
   @Prop({
     reflect: true
-  }) ariaLabel: string
+  })
+  ariaLabel: string
 
   /**
    *  Name type of the button
