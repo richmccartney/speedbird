@@ -103,7 +103,7 @@ jobs:
           working_directory: ~/repo/packages/components
       - save_cache: *save-cache-components
       - run:
-          command: yarn build -- --ci
+          command: yarn build --ci
           working_directory: ~/repo/packages/components
       - save_cache: *save-cache-components-stencil
       - persist_to_workspace:
@@ -122,7 +122,7 @@ jobs:
           working_directory: ~/repo/packages/styles
       - save_cache: *save-cache-styles
       - run:
-          command: yarn build -- --ci
+          command: yarn build --ci
           working_directory: ~/repo/packages/styles
       - save_cache: *save-cache-styles
       - persist_to_workspace:
@@ -161,7 +161,7 @@ jobs:
           working_directory: ~/repo/packages/icons
       - save_cache: *save-cache-icons
       - run:
-          command: yarn build -- --ci
+          command: yarn build --ci
           working_directory: ~/repo/packages/icons
       - save_cache: *save-cache-icons-stencil
       - persist_to_workspace:
