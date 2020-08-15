@@ -3,7 +3,7 @@
   "packages": [
     "packages/*"
   ],
-  "npmClient": "npm",
+  "npmClient": "yarn",
   "version": "independent",
   "publishConfig": {
     "access": "public",

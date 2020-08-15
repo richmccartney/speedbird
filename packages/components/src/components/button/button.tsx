@@ -16,7 +16,7 @@ export class Button implements ComponentInterface {
   @Element() el!: HTMLElement
 
   /**
-   * If `true`, the user cannot interact with the button.
+   * If `true`, the user cannot interact with the button component.
    */
   @Prop({
     reflect: true,
